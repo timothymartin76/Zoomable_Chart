@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
+ 
+		h2 {
+
+			font-size: 1.9em;
+			font-weight: 400;
+			font-family: "Helvetica Neue", Helvetica, sans-serif;
+			padding-left: 90px;
+			}
+
 
 svg {
   font: 10px sans-serif;
@@ -15,7 +24,7 @@ svg {
 .axis line {
   fill: none;
   stroke: #000;
-  shape-rendering: crispEdges;
+
 }
 
 .brush .extent {
@@ -26,10 +35,11 @@ svg {
 
 </style>
 <body>
+<h2>NYC 311 Total Calls</h2>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var margin = {top: 10, right: 10, bottom: 100, left: 80},
+var margin = {top: 0, right: 10, bottom: 100, left: 80},
     margin2 = {top: 430, right: 10, bottom: 20, left: 80},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom,
@@ -80,7 +90,7 @@ var context = svg.append("g")
     .attr("class", "context")
     .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
 
-d3.csv("Calls_Pres_4.csv", type, function(error, data) {
+d3.csv("Calls_Pres_2.csv", type, function(error, data) {
   x.domain(d3.extent(data.map(function(d) { return d.Date; })));
   y.domain([0, d3.max(data.map(function(d) { return d.Calls_Presented; }))]);
   x2.domain(x.domain());
